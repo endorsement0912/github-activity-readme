@@ -162,15 +162,9 @@ const serializers = {
     const emoji = item.payload.pull_request.merged ? "🎉" : "💪";
     const repoName = item.repo.name;
 
-    // Markdown 링크는 PR 번호에만. 나머지는 평문 유지.
-    return `${emoji} ${action} PR [#${prNum}](${prUrl}) in ${repoName}`;
-  };
-  ReleaseEvent: (item) => {
-    return `🚀 ${capitalize(item.payload.action)} release ${toUrlFormat(
-      item,
-    )} in ${toUrlFormat(item.repo.name)}`;
-  },
+    return `${emoji} ${action} PR <a href="${prUrl}">#${prNum}</a> in ${repoName}`;
 };
+
 
 Toolkit.run(
   async (tools) => {
