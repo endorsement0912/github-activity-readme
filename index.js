@@ -158,10 +158,11 @@ const serializers = {
   PullRequestEvent: (item) => {
     const prNum = item.payload.pull_request.number;
     const prUrl = item.payload.pull_request.html_url;
-    const repoName = item.repo.name;
+    const repoName = item.repo.name; // 그냥 평문
     const action = item.payload.pull_request.merged ? "Merged" : capitalize(item.payload.action);
     const emoji = item.payload.pull_request.merged ? "🎉" : "💪";
 
+    // 링크는 PR 번호에만!
     return `${emoji} ${action} PR [#${prNum}](${prUrl}) in ${repoName}`;
   };
 
