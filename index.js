@@ -162,9 +162,7 @@ const serializers = {
   const emoji = item.payload.pull_request.merged ? "🎉" : "💪";
 
   return `${emoji} ${action} PR #${prNum} in ${repoName}`;
-};
-
-
+},
 
 Toolkit.run(
   async (tools) => {
