@@ -20014,17 +20014,13 @@ const serializers = {
     )} in ${toUrlFormat(item.repo.name)}`;
   },
   PullRequestEvent: (item) => {
-    const emoji = item.payload.action === "opened" ? "💪" : "❌";
-    const line = item.payload.pull_request.merged
-      ? "🎉 Merged"
-      : `${emoji} ${capitalize(item.payload.action)}`;
-    return `${line} PR ${toUrlFormat(item)} in ${toUrlFormat(item.repo.name)}`;
-  },
-  ReleaseEvent: (item) => {
-    return `🚀 ${capitalize(item.payload.action)} release ${toUrlFormat(
-      item,
-    )} in ${toUrlFormat(item.repo.name)}`;
-  },
+  const prNum = item.payload.pull_request.number;
+  const repoName = item.repo.name;
+  const action = item.payload.pull_request.merged ? "Merged" : capitalize(item.payload.action);
+  const emoji = item.payload.pull_request.merged ? "🎉" : "💪";
+
+  return `${emoji} ${action} PR #${prNum} in ${repoName}`;
+}
 };
 
 Toolkit.run(
