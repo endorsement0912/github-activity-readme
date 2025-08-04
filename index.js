@@ -227,8 +227,8 @@ Toolkit.run(
       // Add one since the content needs to be inserted just after the initial comment
       startIdx++;
       content.forEach((line, idx) =>
-          readmeContent.splice(startIdx + idx, 0, `${line}`)
-      );
+          readmeContent.splice(startIdx + idx, 0, `- ${line}`)
+    );
 
       // Append <!--END_SECTION:activity--> comment
       readmeContent.splice(
