@@ -20021,7 +20021,7 @@ const serializers = {
     const repoName = item.repo.name;
     const emoji = item.payload.pull_request.merged ? "🎉" : "💪";
 
-    return `${emoji} ${action} PR [#${prNum}](${prUrl}) in **${repoName}**`;
+    return `- ${emoji} ${action} PR [#${prNum}](${prUrl}) in **${repoName}**`;
   }
 };
 
@@ -20108,9 +20108,7 @@ Toolkit.run(
     }
 
     const oldContent = readmeContent.slice(startIdx + 1, endIdx).join("\n");
-    const newContent = content
-      .map((line, idx) => `${idx + 1}. ${line}`)
-      .join("\n");
+    const newContent = content.join("\n");
 
     if (oldContent.trim() === newContent.trim())
       tools.exit.success("No changes detected");
