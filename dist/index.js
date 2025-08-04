@@ -20013,6 +20013,7 @@ const serializers = {
       item,
     )} in ${toUrlFormat(item.repo.name)}`;
   },
+
   PullRequestEvent: (item) => {
     const prNum = item.payload.pull_request.number;
     const prUrl = item.payload.pull_request.html_url;
